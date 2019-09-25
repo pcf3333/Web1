@@ -22,7 +22,7 @@ input{width:50% !important;display:inline-block !important;}
 	<div class="col-md-6 row">
 		<h2>Tabla Repositorios GIT</h2>
 		<p>En esta tabla se muestran los repositories GIT de cada usuario</p>
-		<table class="table">
+		<table class="table" id="tabla">
 			<thead>
 				<tr>
 					<th>Nombre</th>
@@ -50,17 +50,42 @@ input{width:50% !important;display:inline-block !important;}
 		</table>
 	</div>
 	<div class="col-md-6 row" style="padding-left:10%;">
-		<h2>Entra tu nombre de GitHub</h2>
+		<h2>Entra tu nombre de GitHub para <u>Filtrar</u></h2>
 		<div class="form-group">
       <label for="usr">Nombre</label>
       <input type="text" class="form-control" id="usuario">
-			<button type="button" class="btn">Enviar</button>
+			<button type="button" class="btn" id="boton">Enviar</button>
     </div>
 	</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() { 
+		$("#boton").click(function() { 
+		var nombre = $("#usuario").val();
+		$("td:first-child").each(function(){
+			if ($(this).text().toUpperCase() == nombre.toUpperCase()){
+				$(this).parents("tr").show();
+			}
+			else if (nombre == ""){
+				$(this).parents("tr").show();
+			}
+			else{
+				$(this).parents("tr").hide();
+			}
+		});
+	});
+});
+
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+        $("#boton").click();
+    }
+});
+</script>
+
 </body>
 
 </html>
