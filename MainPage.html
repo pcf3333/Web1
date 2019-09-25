@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web Inicial DSA</title>
+	<meta name="Description" content="Our First Webpage with Bootstrap. Diseny de Sistemes i Aplicacions.">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+<body>
+<style>
+h2{
+	font-size:22px;
+	font-weight:bold;
+}
+.row{margin-top:30px;	}
+input{width:50% !important;display:inline-block !important;}
+</style>
+
+<div class="container">
+	<h1 style="text-align:center;"><u>Web Inicial DSA</u></h1>
+	<div class="col-md-6 row">
+		<h2>Tabla Repositorios GIT</h2>
+		<p>En esta tabla se muestran los repositories GIT de cada usuario</p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Edad</th>
+					<th>Repositorios GIT</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Pere</td>
+					<td>20</td>
+					<td>geometry, web1</td>
+				</tr>
+				<tr>
+					<td>Juan</td>
+					<td>23</td>
+					<td>programa1, repositorio2, repositorio3</td>
+				</tr>
+				<tr>
+					<td>Julia</td>
+					<td>18</td>
+					<td>programa2</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-md-6 row" style="padding-left:10%;">
+		<h2>Entra tu nombre de GitHub</h2>
+		<div class="form-group">
+      <label for="usr">Nombre</label>
+      <input type="text" class="form-control" id="usuario">
+			<button type="button" class="btn">Enviar</button>
+    </div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>
