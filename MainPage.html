@@ -26,31 +26,23 @@ input{width:50% !important;display:inline-block !important;}
 			<thead>
 				<tr>
 					<th>Nombre</th>
-					<th>Edad</th>
-					<th>Repositorios GIT</th>
+					<th>Descripción</th>
+					<th>Seguidores</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>Pere</td>
-					<td>20</td>
-					<td>geometry, web1</td>
-				</tr>
-				<tr>
-					<td>Juan</td>
-					<td>23</td>
-					<td>programa1, repositorio2, repositorio3</td>
-				</tr>
-				<tr>
-					<td>Julia</td>
-					<td>18</td>
-					<td>programa2</td>
-				</tr>
+			<tbody id="bodytable">
 			</tbody>
 		</table>
 	</div>
 	<div class="col-md-6 row" style="padding-left:10%;">
-		<h2>Entra tu nombre de GitHub para <u>Filtrar</u></h2>
+		<h2>Buscar usuario de <u>GitHub</u></h2>
+		<div class="form-group">
+      <label for="usr">Nombre</label>
+      <input type="text" class="form-control" id="usuariob">
+			<button type="button" class="btn" id="botonb">Enviar</button>
+    </div>
+		<br><br>
+		<h2>Filtrar los datos por <u>Repositorio</u></h2>
 		<div class="form-group">
       <label for="usr">Nombre</label>
       <input type="text" class="form-control" id="usuario">
@@ -76,14 +68,27 @@ $(document).ready(function() {
 				$(this).parents("tr").hide();
 			}
 		});
-	});
+		});
+		
+		$("#botonb").click(function() { 
+			var longitud=$("tr").length;
+			for(i = 1; i < longitud; i++) { 
+				$("tr")[1].remove();
+			}
+			
+			var nombre = $("#usuariob").val();
+			var newRows = "";
+			$.get('https://api.github.com/users/'+nombre+'/repos', function(html){
+				for(i = 0; i < html.length; i++) { 
+					newRows += "<tr><td>" + html[i].name + "</td><td>" + html[i].description + "</td><td>" + html[i].stargazers_count + "</td></tr>";
+				}
+				$('#tabla tr').first().after(newRows);
+			});
+		});
 });
 
-$(document).keypress(function(e) {
-    if(e.which == 13) {
-        $("#boton").click();
-    }
-});
+
+
 </script>
 
 </body>
